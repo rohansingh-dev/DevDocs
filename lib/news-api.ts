@@ -1,7 +1,7 @@
 import type { Article, NewsApiResponse } from "./types"
 
 // You'll need to add your NewsAPI key as an environment variable
-const API_KEY = process.env.NEWS_API_KEY
+const API_KEY = process.env.8b72ac79fc194ae28d89879ac09e53a8
 const BASE_URL = "https://newsapi.org/v2"
 
 // Cache for articles to simulate a database
