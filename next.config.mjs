@@ -48,15 +48,4 @@ if (userConfig) {
   }
 }
 
-export default {
-  ...nextConfig,
-  head: {
-    scripts: [
-      {
-        async: true,
-        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1571996475837550",
-        crossorigin: "anonymous",
-      },
-    ],
-  },
-};
+export default nextConfig;
