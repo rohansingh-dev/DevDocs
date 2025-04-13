@@ -48,4 +48,18 @@ if (userConfig) {
   }
 }
 
-export default nextConfig;
+export default {
+  ...nextConfig,
+  async rewrites() {
+    return [
+      {
+        source: '/ads.txt',
+        destination: '/public/ads.txt',
+      },
+      {
+        source: '/robots.txt',
+        destination: '/public/robots.txt',
+      },
+    ];
+  },
+};
