@@ -39,18 +39,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Google AdSense Ad Unit */}
-      <ins
-        className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-client="ca-pub-1571996475837550" // Replace with your AdSense publisher ID
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      ></ins>
-      <script>
-        {`(adsbygoogle = window.adsbygoogle || []).push({});`}
-      </script>
-
       <div className="container flex h-16 items-center justify-between px-4">
         <nav className="hidden md:flex gap-6">
           <Link href="/" className="text-sm font-medium hover:underline underline-offset-4">
