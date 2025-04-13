@@ -1,7 +1,7 @@
 import type { Article, NewsApiResponse } from "./types"
 
 // You'll need to add your NewsAPI key as an environment variable
-const API_KEY = process.env.8b72ac79fc194ae28d89879ac09e53a8
+const API_KEY = process.env.API_KEY || "8b72ac79fc194ae28d89879ac09e53a8"
 const BASE_URL = "https://newsapi.org/v2"
 
 // Cache for articles to simulate a database
@@ -34,7 +34,7 @@ export async function fetchTopHeadlines({
     url += `&apiKey=${API_KEY}`
 
     // Fetch the data
-    const response = await fetch(url, { next: { revalidate: 3600 } }) // Cache for 1 hour
+    const response = await fetch(url) // Cache for 1 hour
 
     if (!response.ok) {
       throw new Error(`News API error: ${response.status}`)
@@ -125,7 +125,7 @@ export async function searchArticles(query: string, page = 1, pageSize = 9) {
   try {
     const url = `${BASE_URL}/everything?q=${encodeURIComponent(query)}&page=${page}&pageSize=${pageSize}&apiKey=${API_KEY}`
 
-    const response = await fetch(url, { next: { revalidate: 3600 } })
+    const response = await fetch(url)
 
     if (!response.ok) {
       throw new Error(`News API error: ${response.status}`)
