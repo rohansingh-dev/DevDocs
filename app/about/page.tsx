@@ -16,6 +16,18 @@ export default function AboutPage() {
               news in a clear, concise, and unbiased manner, allowing our readers to form their own opinions based on
               facts.
             </p>
+
+            {/* Google AdSense Ad Unit */}
+            <ins
+              className="adsbygoogle"
+              style={{ display: 'block' }}
+              data-ad-client="ca-pub-1571996475837550" // Replace with your AdSense publisher ID
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+            <script>
+              {`(adsbygoogle = window.adsbygoogle || []).push({});`}
+            </script>
           </div>
 
           <div className="space-y-4">
