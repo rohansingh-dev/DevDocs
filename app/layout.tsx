@@ -5,7 +5,8 @@ import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import Head from 'next/head';
+import Head from "next/head";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -24,8 +25,12 @@ export default function RootLayout({
     <html lang="en">
       <Head>
         {/* Google AdSense Meta Tag */}
-        <meta name="google-adsense-account" content="ca-pub-1571996475837550" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1571996475837550" crossOrigin="anonymous"></script>
+        <meta name="google-adsense-account" content={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ACCOUNT || "ca-pub-1571996475837550"} />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1571996475837550"
+          crossOrigin="anonymous"
+        />
       </Head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
