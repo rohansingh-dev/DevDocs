@@ -25,7 +25,7 @@ export default function RootLayout({
       <Head>
         {/* Google AdSense Meta Tag */}
         <meta name="google-adsense-account" content="ca-pub-1571996475837550" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1571996475837550"crossorigin="anonymous"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1571996475837550" crossOrigin="anonymous"></script>
       </Head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
