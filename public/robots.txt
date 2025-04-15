@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /backend/
+Allow: /
+Sitemap: https://newshub.com/sitemap.xml
