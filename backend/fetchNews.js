@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-require('dotenv').config(); // Load environment variables
+require('dotenv').config(); // Ensure environment variables are loaded
 
 const OUTPUT_FILE = path.join(__dirname, 'newsData.json');
 const NEWSDATA_API_URL = 'https://newsdata.io/api/1/news'; // NewsData.io API endpoint

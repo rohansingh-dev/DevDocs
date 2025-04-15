@@ -7,7 +7,7 @@ const { Readable } = require('stream');
 const fetchNews = require('./fetchNews'); // Import the fetchNews function
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000; // Use Vercel's dynamic port
 const NEWS_DATA_FILE = path.join(__dirname, 'newsData.json');
 
 // Enable CORS to allow requests from the frontend

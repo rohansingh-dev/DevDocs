@@ -230,7 +230,7 @@
 
         document.addEventListener('DOMContentLoaded', loadNews);
 
-        fetch('/api/news')
+        fetch('/api/news') // Use relative path for Vercel
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
