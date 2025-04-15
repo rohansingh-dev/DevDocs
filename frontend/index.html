@@ -230,16 +230,5 @@
 
         document.addEventListener('DOMContentLoaded', loadNews);
     </script>
-    <script>
-        // Dark mode toggle
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            document.querySelector('header').classList.toggle('dark-mode');
-            document.querySelector('footer').classList.toggle('dark-mode');
-            document.querySelectorAll('.news-item').forEach(item => item.classList.toggle('dark-mode'));
-            document.querySelector('.ad-slot').classList.toggle('dark-mode');
-        });
-    </script>
 </body>
 </html>
