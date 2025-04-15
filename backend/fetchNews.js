@@ -84,3 +84,5 @@ function saveArticlesToFile(articles) {
 // Schedule fetching news
 setInterval(fetchNews, (FETCH_INTERVAL_DAYS * 24 * 60 * 60 * 1000) / FETCH_LIMIT);
 fetchNews();
+
+module.exports = fetchNews; // Export the fetchNews function

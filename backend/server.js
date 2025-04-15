@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { SitemapStream, streamToPromise } = require('sitemap');
 const { Readable } = require('stream');
+const fetchNews = require('./fetchNews'); // Import the fetchNews function
 
 const app = express();
 const PORT = 3000;
@@ -64,6 +65,10 @@ app.get('/api/sitemap', async (req, res) => {
         res.status(500).send('Error generating sitemap');
     }
 });
+
+// Schedule news fetching on server startup
+fetchNews(); // Fetch news immediately on startup
+setInterval(fetchNews, (process.env.FETCH_INTERVAL_DAYS * 24 * 60 * 60 * 1000) / process.env.FETCH_LIMIT);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

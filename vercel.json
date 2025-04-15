@@ -1,15 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "backend/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "frontend/**/*",
-      "use": "@vercel/static"
-    }
-  ],
+  "outputDirectory": "frontend",
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/api/sitemap" },
     { "source": "/api/(.*)", "destination": "/backend/server.js" },
