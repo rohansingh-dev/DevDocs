@@ -1,8 +1,6 @@
 {
   "version": 2,
-  "outputDirectory": "frontend",
   "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
     { "source": "/api/(.*)", "destination": "/backend/server.js" },
     { "source": "/(.*)", "destination": "/frontend/$1" }
   ]

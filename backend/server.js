@@ -1,12 +1,17 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 const { SitemapStream, streamToPromise } = require('sitemap');
 const { Readable } = require('stream');
 const fetchNews = require('./fetchNews'); // Import the fetchNews function
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const NEWS_DATA_FILE = path.join(__dirname, 'newsData.json');
+
+// Enable CORS to allow requests from the frontend
+app.use(cors());
 
 // Middleware for parsing JSON
 app.use(express.json());
@@ -17,7 +22,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 // API route to fetch news data
 app.get('/api/news', (req, res) => {
     try {
-        const newsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'newsData.json'), 'utf-8'));
+        const newsData = JSON.parse(fs.readFileSync(NEWS_DATA_FILE, 'utf-8'));
         res.json(newsData);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching news data', error: error.message });
