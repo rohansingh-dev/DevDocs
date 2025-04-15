@@ -22,11 +22,5 @@
       "src": "frontend/**/*",
       "use": "@vercel/static"
     }
-  ],
-  "domains": [
-    {
-      "name": "portfolio.xyz",
-      "type": "alias"
-    }
   ]
 }
