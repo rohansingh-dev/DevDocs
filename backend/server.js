@@ -1,6 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const { SitemapStream, streamToPromise } = require('sitemap');
+const { Readable } = require('stream');
 
 const app = express();
 const PORT = 3000;
@@ -39,6 +41,28 @@ app.get('/contact-us.html', (req, res) => {
 // Route for news details
 app.get('/news-details.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/news-details.html'));
+});
+
+// Route to generate sitemap
+app.get('/api/sitemap', async (req, res) => {
+    try {
+        const links = [
+            { url: '/', changefreq: 'daily', priority: 1.0 },
+            { url: '/contact-us.html', changefreq: 'monthly', priority: 0.8 },
+            { url: '/privacy-policy.html', changefreq: 'monthly', priority: 0.8 },
+            { url: '/terms-of-service.html', changefreq: 'monthly', priority: 0.8 },
+            // Add more static or dynamic URLs as needed
+        ];
+
+        const stream = new SitemapStream({ hostname: 'https://your-domain.com' });
+        const xml = await streamToPromise(Readable.from(links).pipe(stream)).then((data) => data.toString());
+
+        res.header('Content-Type', 'application/xml');
+        res.send(xml);
+    } catch (error) {
+        console.error('Error generating sitemap:', error.message);
+        res.status(500).send('Error generating sitemap');
+    }
 });
 
 // Error handling middleware
