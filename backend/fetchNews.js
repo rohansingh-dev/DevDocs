@@ -1,24 +1,15 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-require('dotenv').config(); // Ensure environment variables are loaded
+require('dotenv').config(); // Load environment variables
 
 const OUTPUT_FILE = path.join(__dirname, 'newsData.json');
 const NEWSDATA_API_URL = 'https://newsdata.io/api/1/news'; // NewsData.io API endpoint
 const API_KEY = process.env.NEWSDATA_API_KEY; // Your NewsData.io API key
 const QUERY = 'technology'; // Query for fetching news
 const LANGUAGE = 'en'; // Fetch articles in English
-const FETCH_LIMIT = parseInt(process.env.FETCH_LIMIT, 10) || 150; // Fetch limit
-const FETCH_INTERVAL_DAYS = parseInt(process.env.FETCH_INTERVAL_DAYS, 10) || 30; // Fetch interval in days
-
-let fetchCount = 0;
 
 async function fetchNews() {
-    if (fetchCount >= FETCH_LIMIT) {
-        console.log('Fetch limit reached for the current interval.');
-        return;
-    }
-
     try {
         const existingArticles = loadExistingArticles();
 
@@ -53,7 +44,6 @@ async function fetchNews() {
         const combinedArticles = sortArticlesByDate([...existingArticles, ...filteredNewArticles]);
 
         saveArticlesToFile(combinedArticles);
-        fetchCount += 1;
         console.log(`News data updated successfully. Total articles: ${combinedArticles.length}`);
     } catch (error) {
         console.error('Error fetching news:', error.response?.data || error.message);
@@ -81,8 +71,4 @@ function saveArticlesToFile(articles) {
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(articles, null, 2));
 }
 
-// Schedule fetching news
-setInterval(fetchNews, (FETCH_INTERVAL_DAYS * 24 * 60 * 60 * 1000) / FETCH_LIMIT);
 fetchNews();
-
-module.exports = fetchNews; // Export the fetchNews function

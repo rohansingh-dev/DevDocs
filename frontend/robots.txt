@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /backend/
-Allow: /
-Sitemap: https://portfolioweb.xyz/sitemap.xml

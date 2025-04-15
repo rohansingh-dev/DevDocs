@@ -1,20 +1,9 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const cors = require('cors');
-const { SitemapStream, streamToPromise } = require('sitemap');
-const { Readable } = require('stream');
-const fetchNews = require('./fetchNews'); // Import the fetchNews function
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Use Vercel's dynamic port
-const NEWS_DATA_FILE = path.join(__dirname, 'newsData.json');
-
-// Enable CORS to allow requests from the frontend
-app.use(cors());
-
-// Middleware for parsing JSON
-app.use(express.json());
+const PORT = 3000;
 
 // Serve static files (e.g., frontend files)
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -22,7 +11,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 // API route to fetch news data
 app.get('/api/news', (req, res) => {
     try {
-        const newsData = JSON.parse(fs.readFileSync(NEWS_DATA_FILE, 'utf-8'));
+        const newsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'newsData.json'), 'utf-8'));
         res.json(newsData);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching news data', error: error.message });
@@ -49,36 +38,46 @@ app.get('/news-details.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/news-details.html'));
 });
 
-// Route to generate sitemap
-app.get('/api/sitemap', async (req, res) => {
-    try {
-        const links = [
-            { url: '/', changefreq: 'daily', priority: 1.0 },
-            { url: '/contact-us.html', changefreq: 'monthly', priority: 0.8 },
-            { url: '/privacy-policy.html', changefreq: 'monthly', priority: 0.8 },
-            { url: '/terms-of-service.html', changefreq: 'monthly', priority: 0.8 },
-            // Add more static or dynamic URLs as needed
-        ];
-
-        const stream = new SitemapStream({ hostname: 'https://your-domain.com' });
-        const xml = await streamToPromise(Readable.from(links).pipe(stream)).then((data) => data.toString());
-
-        res.header('Content-Type', 'application/xml');
-        res.send(xml);
-    } catch (error) {
-        console.error('Error generating sitemap:', error.message);
-        res.status(500).send('Error generating sitemap');
-    }
+// Dynamic sitemap.xml
+app.get('/sitemap.xml', (req, res) => {
+    const newsData = JSON.parse(fs.readFileSync(path.join(__dirname, 'newsData.json'), 'utf-8'));
+    const baseUrl = 'https://newshub.com';
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${newsData
+        .map(article => `
+        <url>
+            <loc>${baseUrl}/news-details.html?id=${encodeURIComponent(article.url)}</loc>
+            <lastmod>${new Date(article.publishedAt).toISOString()}</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.8</priority>
+        </url>
+    `)
+        .join('')}
+</urlset>`;
+    res.header('Content-Type', 'application/xml');
+    res.send(sitemap);
 });
 
-// Schedule news fetching on server startup
-fetchNews(); // Fetch news immediately on startup
-setInterval(fetchNews, (process.env.FETCH_INTERVAL_DAYS * 24 * 60 * 60 * 1000) / process.env.FETCH_LIMIT);
+// Serve ads.txt
+app.get('/ads.txt', (req, res) => {
+    const adsTxtContent = `
+google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0
+    `;
+    res.header('Content-Type', 'text/plain');
+    res.send(adsTxtContent.trim());
+});
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something went wrong!');
+// Serve robots.txt
+app.get('/robots.txt', (req, res) => {
+    const robotsTxtContent = `
+User-agent: *
+Disallow: /backend/
+Allow: /
+Sitemap: https://newshub.com/sitemap.xml
+    `;
+    res.header('Content-Type', 'text/plain');
+    res.send(robotsTxtContent.trim());
 });
 
 // Start the server
