@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Details - NewsHub</title>
     <link rel="stylesheet" href="styles.css">
-</head>
+    </head>
 <body>
     <header>
         <h1>NewsHub</h1>
     </header>
     <main>
         <div id="news-details" class="news-details-container">
-            <!-- News details will be dynamically loaded here -->
+        <!-- News details will be dynamically loaded here -->
         </div>
     </main>
     <footer>
@@ -24,7 +24,28 @@
             <a href="contact-us.html">Contact Us</a>
         </nav>
     </footer>
-    <script>
+<script>
+        function loadNewsDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const title = params.get('title');
+            const description = params.get('description');
+            const source = params.get('source');
+            const publishedAt = params.get('publishedAt');
+            const url = params.get('id');
+
+            const newsDetailsContainer = document.getElementById('news-details');
+            newsDetailsContainer.innerHTML = `
+                <h2>${title || 'No title available'}</h2>
+                <p><strong>Published At:</strong> ${new Date(publishedAt).toLocaleString()}</p>
+                <p><strong>Source:</strong> ${source || 'Unknown'}</p>
+                <p>${description || 'No description available.'}</p>
+                <a href="${url}" target="_blank">Read Full Article</a>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadNewsDetails);
+    </script>
+<script>
         function loadNewsDetails() {
             const params = new URLSearchParams(window.location.search);
             const title = params.get('title');

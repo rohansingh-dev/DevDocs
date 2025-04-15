@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 $data = json_decode(file_get_contents('php://input'), true);
 
 if (isset($data['email']) && filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-    $email = $data['email'];
+    $email = htmlspecialchars($data['email'], ENT_QUOTES, 'UTF-8');
     $file = 'subscribers.csv';
 
     if (file_exists($file)) {

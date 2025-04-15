@@ -17,5 +17,9 @@
   "env": {
     "FETCH_LIMIT": "150",
     "FETCH_INTERVAL_DAYS": "30"
-  }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/backend/server.js" },
+    { "source": "/(.*)", "destination": "/frontend/$1" }
+  ]
 }

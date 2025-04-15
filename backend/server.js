@@ -5,6 +5,9 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
+// Middleware for parsing JSON
+app.use(express.json());
+
 // Serve static files (e.g., frontend files)
 app.use(express.static(path.join(__dirname, '../frontend')));
 
@@ -78,6 +81,12 @@ Sitemap: https://newshub.com/sitemap.xml
     `;
     res.header('Content-Type', 'text/plain');
     res.send(robotsTxtContent.trim());
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
 });
 
 // Start the server
