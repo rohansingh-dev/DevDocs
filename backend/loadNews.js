@@ -5,7 +5,7 @@ let filteredArticles = [];
 
 function displayArticles(page) {
     const container = document.getElementById('news-container');
-    container.innerHTML = '';
+    container.innerHTML = ''; // Clear previous content
     const start = (page - 1) * articlesPerPage;
     const end = start + articlesPerPage;
     const paginatedArticles = filteredArticles.slice(start, end);
@@ -30,7 +30,7 @@ function displayArticles(page) {
 
 function setupPagination() {
     const pagination = document.getElementById('pagination');
-    pagination.innerHTML = '';
+    pagination.innerHTML = ''; // Clear previous pagination
     const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
 
     for (let i = 1; i <= totalPages; i++) {

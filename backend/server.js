@@ -62,7 +62,7 @@ app.get('/sitemap.xml', (req, res) => {
 // Serve ads.txt
 app.get('/ads.txt', (req, res) => {
     const adsTxtContent = `
-google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0
+google.com, pub-1571996475837550, DIRECT, f08c47fec0942fa0
     `;
     res.header('Content-Type', 'text/plain');
     res.send(adsTxtContent.trim());

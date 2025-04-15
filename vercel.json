@@ -13,5 +13,9 @@
   "routes": [
     { "src": "/api/(.*)", "dest": "backend/server.js" },
     { "src": "/(.*)", "dest": "frontend/$1" }
-  ]
+  ],
+  "env": {
+    "FETCH_LIMIT": "150",
+    "FETCH_INTERVAL_DAYS": "30"
+  }
 }
