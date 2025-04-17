@@ -24,6 +24,18 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
+
+    /* Sidebar variables */
+    --sidebar-width: 16rem;
+    --sidebar-width-icon: 3rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -46,6 +58,16 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
+
+    /* Sidebar variables */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -55,5 +77,65 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Code block styling */
+  pre {
+    @apply p-4 rounded-lg bg-muted overflow-x-auto text-sm my-4;
+  }
+
+  code {
+    @apply font-mono text-sm;
+  }
+
+  /* Documentation content styling */
+  .docs-content h1 {
+    @apply text-3xl font-bold mt-8 mb-4;
+  }
+
+  .docs-content h2 {
+    @apply text-2xl font-semibold mt-6 mb-3;
+  }
+
+  .docs-content h3 {
+    @apply text-xl font-medium mt-5 mb-2;
+  }
+
+  .docs-content p {
+    @apply my-4 leading-7;
+  }
+
+  .docs-content ul,
+  .docs-content ol {
+    @apply my-4 pl-6;
+  }
+
+  .docs-content ul {
+    @apply list-disc;
+  }
+
+  .docs-content ol {
+    @apply list-decimal;
+  }
+
+  .docs-content a {
+    @apply text-primary hover:underline;
+  }
+
+  .docs-content blockquote {
+    @apply border-l-4 border-muted-foreground pl-4 italic my-4;
+  }
+
+  .docs-content table {
+    @apply w-full border-collapse my-4;
+  }
+
+  .docs-content th,
+  .docs-content td {
+    @apply border border-border p-2;
+  }
+
+  .docs-content th {
+    @apply bg-muted;
   }
 }
