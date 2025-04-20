@@ -44,6 +44,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="canonical" href="https://portfolioweb.xyz" />
+        <link rel="icon" href="/Dev-Docs.ico" type="image/x-icon"></link>
         <meta name="google-adsense-account" content="ca-pub-1571996475837550"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
@@ -56,12 +57,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <SidebarProvider>
-            <div className="relative flex min-h-screen flex-col">
+            <div className="relative flex flex-col min-h-screen">
               <SiteHeader />
               <div className="flex flex-1">
                 <DocsSidebar />
                 <div className="flex flex-col flex-1">
-                  <main className="flex-1 px-4 md:px-8 py-6">{children}</main>
+                  <main className="flex-1 px-4 py-6 md:px-8">{children}</main>
                   <SiteFooter />
                 </div>
               </div>
