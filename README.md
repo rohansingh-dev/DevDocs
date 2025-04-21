@@ -85,8 +85,3 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 This project is licensed under the [MIT License](LICENSE).
 
----
-
-*For any questions or feedback, feel free to reach out to [rohansingh.rs608@gmail.com](mailto:rohansingh.rs608@gmail.com).*
-
---- 
