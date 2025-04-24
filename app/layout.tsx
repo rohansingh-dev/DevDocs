@@ -46,6 +46,7 @@ export default function RootLayout({
         <link rel="icon" href="/Dev-Docs.ico" type="image/x-icon"></link>
         <meta name="google-adsense-account" content="ca-pub-1571996475837550"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://ligheechoagool.com/88/tag.min.js" data-zone="144066" async data-cfasync="false"></script>
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1571996475837550"
