@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import { Mail } from "lucide-react"
+import { AdBanner } from "@/components/ad-banner";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -47,10 +48,12 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-4xl font-bold mb-8">Contact Us</h1>
+    <div className="container py-8 mx-auto">
+      <h1 className="mb-8 text-4xl font-bold">Contact Us</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <AdBanner slot="4987094295" format="auto" className="my-4" />
+
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div>
           <Card>
             <CardHeader>
@@ -92,8 +95,8 @@ export default function ContactPage() {
 
         <div className="space-y-6">
           <div>
-            <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
-            <p className="text-muted-foreground mb-6">
+            <h2 className="mb-4 text-2xl font-bold">Get in Touch</h2>
+            <p className="mb-6 text-muted-foreground">
               Have questions about our documentation? Want to report an error or suggest an improvement? We'd love to
               hear from you!
             </p>
@@ -102,7 +105,7 @@ export default function ContactPage() {
           <div className="space-y-4">
             <Card>
               <CardContent className="flex items-center gap-4 p-6">
-                <Mail className="h-8 w-8 text-primary" />
+                <Mail className="w-8 h-8 text-primary" />
                 <div>
                   <h3 className="font-medium">Email</h3>
                   <p className="text-muted-foreground">pivotal361@gmail.com</p>

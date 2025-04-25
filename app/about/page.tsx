@@ -1,21 +1,24 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { User2, BookOpen, Code2, Users } from "lucide-react"
+import { AdBanner } from "@/components/ad-banner";
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto py-8 space-y-12">
+    <div className="container py-8 mx-auto space-y-12">
       <div>
-        <h1 className="text-4xl font-bold mb-4">About DevDocs</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl">
+        <h1 className="mb-4 text-4xl font-bold">About DevDocs</h1>
+        <p className="max-w-3xl text-xl text-muted-foreground">
           Our mission is to provide high-quality, accessible programming documentation for developers at all skill
           levels.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <AdBanner slot="4987094295" format="auto" className="my-4" />
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <BookOpen className="h-8 w-8 text-primary mb-2" />
+            <BookOpen className="w-8 h-8 mb-2 text-primary" />
             <CardTitle>Our Mission</CardTitle>
           </CardHeader>
           <CardContent>
@@ -29,7 +32,7 @@ export default function AboutPage() {
 
         <Card>
           <CardHeader>
-            <Code2 className="h-8 w-8 text-primary mb-2" />
+            <Code2 className="w-8 h-8 mb-2 text-primary" />
             <CardTitle>Our Approach</CardTitle>
           </CardHeader>
           <CardContent>
@@ -43,7 +46,7 @@ export default function AboutPage() {
 
         <Card>
           <CardHeader>
-            <Users className="h-8 w-8 text-primary mb-2" />
+            <Users className="w-8 h-8 mb-2 text-primary" />
             <CardTitle>Our Community</CardTitle>
           </CardHeader>
           <CardContent>
@@ -56,7 +59,7 @@ export default function AboutPage() {
 
         <Card>
           <CardHeader>
-            <User2 className="h-8 w-8 text-primary mb-2" />
+            <User2 className="w-8 h-8 mb-2 text-primary" />
             <CardTitle>Our Values</CardTitle>
           </CardHeader>
           <CardContent>

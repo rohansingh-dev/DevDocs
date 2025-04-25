@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
+import { AdBanner } from "@/components/ad-banner";
 
 interface TocItem {
   id: string
@@ -63,6 +64,8 @@ export function TableOfContents({ items }: TableOfContentsProps) {
           </li>
         ))}
       </ul>
+      <AdBanner slot="4987094295" format="auto" className="my-4" />
+      <AdBanner slot="4987094295" format="auto" className="my-4" />
     </div>
   )
 }

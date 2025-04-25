@@ -67,7 +67,10 @@ export default function RootLayout({
               <div className="flex flex-1">
                 <DocsSidebar />
                 <div className="flex flex-col flex-1">
-                  <main className="flex-1 px-4 py-6 md:px-8">{children}</main>
+                  <main className="flex-1 px-4 py-6 md:px-8">
+                    <AdBanner slot="4987094295" format="auto" className="my-4" />
+                    {children}
+                  </main>
                   <SiteFooter />
                 </div>
               </div>
