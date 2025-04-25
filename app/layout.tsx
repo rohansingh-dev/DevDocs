@@ -47,12 +47,8 @@ export default function RootLayout({
         <link rel="icon" href="/Dev-Docs.ico" type="image/x-icon"></link>
         <meta name="google-adsense-account" content="ca-pub-1571996475837550"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1571996475837550"
-          crossOrigin="anonymous"
-          defer
-        ></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1571996475837550"
+     crossOrigin="anonymous"></script>
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
