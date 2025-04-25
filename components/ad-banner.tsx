@@ -30,7 +30,7 @@ export function AdBanner({ slot, format = "auto", className = "" }: AdBannerProp
       } catch (error) {
         console.error("Ad error:", error)
       }
-    }, 100)
+    }, 200) // Updated delay to 200ms for better ad initialization
 
     return () => clearTimeout(timer)
   }, [])
@@ -54,7 +54,7 @@ export function AdBanner({ slot, format = "auto", className = "" }: AdBannerProp
         <ins
           className="adsbygoogle"
           style={{ display: "block", width: "100%", height: "100%" }}
-          data-ad-client="ca-pub-1234567890123456"
+          data-ad-client="ca-pub-1571996475837550"
           data-ad-slot={slot}
           data-ad-format={format}
           data-full-width-responsive="true"

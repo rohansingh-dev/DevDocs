@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { DocsSidebar } from "@/components/docs-sidebar"
+import { AdBanner } from "@/components/ad-banner"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -51,6 +52,11 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1571996475837550"
           crossOrigin="anonymous"
           defer
+        ></script>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          data-ad-client="ca-pub-1571996475837550"
         ></script>
       </head>
       <body className={inter.className}>
