@@ -81,7 +81,7 @@
 
   /* Code block styling */
   pre {
-    @apply p-4 rounded-lg bg-muted overflow-x-auto text-sm my-4;
+    @apply p-4 my-4 overflow-x-auto text-sm rounded-lg bg-muted;
   }
 
   code {
@@ -90,15 +90,15 @@
 
   /* Documentation content styling */
   .docs-content h1 {
-    @apply text-3xl font-bold mt-8 mb-4;
+    @apply mt-8 mb-4 text-3xl font-bold;
   }
 
   .docs-content h2 {
-    @apply text-2xl font-semibold mt-6 mb-3;
+    @apply mt-6 mb-3 text-2xl font-semibold;
   }
 
   .docs-content h3 {
-    @apply text-xl font-medium mt-5 mb-2;
+    @apply mt-5 mb-2 text-xl font-medium;
   }
 
   .docs-content p {
@@ -107,7 +107,7 @@
 
   .docs-content ul,
   .docs-content ol {
-    @apply my-4 pl-6;
+    @apply pl-6 my-4;
   }
 
   .docs-content ul {
@@ -123,19 +123,47 @@
   }
 
   .docs-content blockquote {
-    @apply border-l-4 border-muted-foreground pl-4 italic my-4;
+    @apply pl-4 my-4 italic border-l-4 border-muted-foreground;
   }
 
   .docs-content table {
-    @apply w-full border-collapse my-4;
+    @apply w-full my-4 border-collapse;
   }
 
   .docs-content th,
   .docs-content td {
-    @apply border border-border p-2;
+    @apply p-2 border border-border;
   }
 
   .docs-content th {
     @apply bg-muted;
+  }
+}
+
+@media (max-width: 768px) {
+  .docs-content h1 {
+    @apply text-2xl;
+  }
+
+  .docs-content h2 {
+    @apply text-xl;
+  }
+
+  .docs-content h3 {
+    @apply text-lg;
+  }
+
+  .docs-content p {
+    @apply text-sm;
+  }
+
+  .docs-content ul,
+  .docs-content ol {
+    @apply pl-4;
+  }
+
+  .docs-content th,
+  .docs-content td {
+    @apply text-xs;
   }
 }
